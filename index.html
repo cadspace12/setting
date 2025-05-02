@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CAD POINT Batch Groups</title>
+    <style>
+        /* Basic Styling */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f2f5; /* Light grey background */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            text-align: center;
+        }
+
+        /* Heading Style */
+        h1 {
+            color: #1c1e21; /* Dark grey color */
+            margin-bottom: 30px;
+            font-size: 2em; /* Larger font size */
+            border-bottom: 2px solid #4CAF50; /* Green underline */
+            padding-bottom: 10px;
+            display: inline-block; /* Keep underline tight */
+        }
+
+        /* Container for buttons */
+        .container {
+            background-color: #ffffff; /* White background for the card */
+            padding: 30px 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Softer shadow */
+            max-width: 400px; /* Limit width */
+            width: 90%; /* Responsive width */
+        }
+
+        /* Button Styling */
+        .join-button {
+            display: block; /* Buttons take full width */
+            width: 100%;
+            padding: 15px 20px;
+            margin-bottom: 15px; /* Space between buttons */
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            color: white; /* White text */
+        }
+
+        /* Specific Button Colors */
+        .morning-button {
+            background-color: #4CAF50; /* Green */
+        }
+
+        .evening-button {
+            background-color: #2196F3; /* Blue */
+        }
+
+        /* Hover Effects */
+        .join-button:hover {
+            opacity: 0.9;
+            transform: translateY(-2px); /* Slight lift effect */
+        }
+
+        /* Remove margin from the last button */
+        .join-button:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5em;
+            }
+            .container {
+                padding: 20px 25px;
+            }
+            .join-button {
+                padding: 12px 15px;
+                font-size: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>CAD POINT Setting Batch Group</h1>
+
+    <div class="container">
+        <button
+            class="join-button morning-button"
+            data-group-name="02 May Evening Setting Batch"
+            data-password="cp2222"
+            data-link="https://chat.whatsapp.com/FnPf6bFFDSt2eiVnV02w2w">
+            02 May Evening Setting Batch
+        </button>
+
+        <button
+            class="join-button evening-button"
+            data-group-name="New Setting Morning Batch Coming Soon"
+            data-password="cp5555"
+            data-link="#newsettingbatchlink">
+            New Setting Morning Batch Coming Soon
+        </button>
+    </div>
+
+    <script>
+        // Function to handle join attempt
+        function handleJoinAttempt(buttonElement) {
+            // Get data from the button's data attributes
+            const groupName = buttonElement.dataset.groupName;
+            const correctPassword = buttonElement.dataset.password;
+            const groupLink = buttonElement.dataset.link;
+
+            // Prompt user for password
+            const enteredPassword = prompt(`"${groupName}" ग्रुप में शामिल होने के लिए पासवर्ड दर्ज करें:`);
+
+            // Check if user pressed Cancel or left it empty
+            if (enteredPassword === null) {
+                alert("प्रक्रिया रद्द कर दी गई।");
+                return; // Stop the function
+            }
+
+            // Check if the entered password matches the correct password (case-sensitive)
+            // Use trim() to remove any accidental spaces
+            if (enteredPassword.trim() === correctPassword) {
+                alert("पासवर्ड सही है! आपको व्हाट्सएप ग्रुप में रीडायरेक्ट किया जा रहा है...");
+                // Redirect to the WhatsApp group link
+                window.location.href = groupLink;
+            } else {
+                // Incorrect password
+                alert("गलत पासवर्ड! कृपया पुनः प्रयास करें।");
+            }
+        }
+
+        // Add event listeners to both buttons
+        document.querySelectorAll('.join-button').forEach(button => {
+            button.addEventListener('click', function() {
+                handleJoinAttempt(this); // 'this' refers to the clicked button
+            });
+        });
+    </script>
+
+</body>
+</html>
